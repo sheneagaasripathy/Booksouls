@@ -1,0 +1,18 @@
+/* .root{
+    
+} */
+
+.grid{
+    align-items: center;
+    margin: 20px 250px 50px 250px;
+    padding: 10px 10px 10px 10px;
+    display: 'flex';
+    background-color: #8c8c8c;
+
+}
+
+.paper{
+    margin: 5px 5px 5px 5px;
+    padding: 10px 10px 10px 10px;
+    background-color: #f2f2f2;
+}
