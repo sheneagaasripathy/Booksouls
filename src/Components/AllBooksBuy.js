@@ -25,6 +25,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Pagination from '@material-ui/lab/Pagination';
 
 
 const useStyles = makeStyles((theme) => ({

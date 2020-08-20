@@ -30,7 +30,7 @@ function BottomBar() {
                 <br/>
                 <EmailIcon/>
                 <FacebookIcon/>
-                <InstagramIcon/>
+                <InstagramIcon />
                 <TwitterIcon/>
             </Grid>
             <Grid item xs={8}>
