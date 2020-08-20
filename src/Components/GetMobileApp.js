@@ -22,16 +22,18 @@ const useStyles = makeStyles((theme) => ({
   const style = {
     root: {
       minWidth: 275,
-      backgroundImage: `url(https://images.pexels.com/photos/3734604/pexels-photo-3734604.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)`,
+      minHeight: 200,
+      backgroundImage: `url(https://www.jebbit.com/wp-content/uploads/2017/09/jebbit-facebook-cover-photo-1.jpg)`,
       backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
       marginTop: 0,
       color: 'white'
     },
     title: {
       fontSize: 24,
-      textAlign:'center'
+      textAlign:'left',
+      justify: 'flex-end'
     },
 }
 
@@ -43,34 +45,18 @@ const useStyles = makeStyles((theme) => ({
       <div className={classes.root}  style={{ padding: 5 }}>
         <Grid container spacing={1} >
           <Grid item xs = {12}>
-          <Paper>
               <Card style={style.root} variant="outlined">
                 <Grid container spacing={1} >
-                    <Grid item xs = {8}/>
-                    <Grid item xs = {4}>
-                        <Paper style={{ margin: 20 }}>
-                            <Card variant="outlined"> 
-                            <div style={{ margin: 5 }}>
+                    <Grid item xs = {1}/>
+                    <Grid item xs = {4} style={{justifyContent: 'bottom'}}>
+                            <div className={style.title} style={{ margin: 5 }}>
+                              <view></view>
                                 Get our Mobile App<br/>
-                                .................................................
-                                <div style={{ margin: 5 }}>
-                                    <Button variant="outlined">
-                                        Download For IOS
-                                    </Button>
-                                </div>
-                                <div style={{ margin: 5 }}>
-                                    <Button variant="outlined">
-                                        Download For Android
-                                    </Button >
-                                </div>
                                 [Our Mobile app not yet developed]
                             </div>
-                            </Card>
-                        </Paper>
                     </Grid>
                 </Grid>
               </Card>
-            </Paper>
           </Grid>
         </Grid>
         </div>

@@ -5,6 +5,7 @@ import NavBar from './Components/NavBar';
 import BottomBar from './Components/BottomBar';
 import GetMobileApp from './Components/GetMobileApp';
 import BuySellHome from './Components/BuySellHome';
+import BookListHome from './Components/BookListHome';
 
 function App() {
   return (
@@ -24,8 +25,6 @@ function App() {
         </a>
       </header> */}
       <NavBar/>
-      <BuySellHome/>
-      <GetMobileApp/>
       <BottomBar/>
     </div>
   );

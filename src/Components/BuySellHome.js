@@ -8,6 +8,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
+import BookListHome from './BookListHome';
+import GetMobileApp from './GetMobileApp';
+import BookSoulsDef from './BookSoulsDef';
+import WhyShouldBookSouls from './WhyShouldBookSouls';
 
 
 
@@ -28,17 +32,17 @@ const useStyles = makeStyles((theme) => ({
   const style = {
     root: {
       minWidth: 275,
-      backgroundImage: `url(https://image.freepik.com/free-photo/young-girl-reading-book-copy-space_23-2148475765.jpg)`,
+      backgroundImage: `url(https://i.pinimg.com/originals/04/5c/70/045c70e3dcdb99ec3fa50aebb6cc3668.jpg)`,
       backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
       marginTop: 0,
       color: 'white'
     },
     title: {
       fontSize: 24,
       textAlign:'center'
-    },
+    },  
 }
 
 
@@ -53,48 +57,55 @@ const useStyles = makeStyles((theme) => ({
           <Paper>
               <Card style={style.root} variant="outlined" >
                 <div style={{ margin: 40 }}> 
-                  <Grid container spacing={1} >
-                      <Grid item xs = {1}>
-                          <Paper style={{ marginTop: 10 }}>
-                              <Card variant="outlined" > 
-                              <Button>Buy</Button>
-                              </Card>
-                          </Paper>
+                  {/* <Grid container spacing={12} >
+                    <Grid item xs = {3} style = {{backgroundColor:"#ece58b"}}> */}
+                      <Grid container spacing={1} style = {{margin:20}}>
+                          <Grid item xs = {7}/>
+                          <Grid item xs = {2}>
+                              <Paper style={{ marginTop: 10 }}>
+                                  <Card variant="outlined" style = {{backgroundColor:"#EECE5C"}}> 
+                                  <Button size="large" style = {{backgroundColor:"#EECE5C"}} href = "/buy">Buy</Button>
+                                  </Card>
+                              </Paper>
+                          </Grid>
+                          <Grid item xs = {2}>
+                              <Paper style={{ marginTop: 10 }}>
+                                  <Card variant="outlined" style = {{backgroundColor:"#EECE5C"}}> 
+                                  <Button size="large" style = {{backgroundColor:"#EECE5C"}} href = "/sell">Sell</Button>
+                                  </Card>
+                              </Paper>
+                          </Grid>
+                          <Grid item xs = {1}/>
                       </Grid>
-                      <Grid item xs = {1}>
-                          <Paper style={{ marginTop: 10 }}>
-                              <Card variant="outlined"> 
-                              <Button>Sell</Button>
-                              </Card>
-                          </Paper>
+                      <Grid container spacing={1} >
+                      <Grid item xs = {12}>
+                        {/* <TextField
+                          className={classes.margin}
+                          id="input-with-icon-textfield"
+                          label="Search for Books"
+                          InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <IconButton type="submit" aria-label="search">
+                                  <SearchIcon />
+                                </IconButton>
+                              </InputAdornment>
+                            ),
+                          }}
+                        /> */}
                       </Grid>
-                      <Grid item xs = {10}/>
-                  </Grid>
-                  <Grid container spacing={1} >
-                  <Grid item xs = {2}>
-                    <TextField
-                      className={classes.margin}
-                      id="input-with-icon-textfield"
-                      label="TextField"
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <IconButton type="submit" aria-label="search">
-                              <SearchIcon />
-                            </IconButton>
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs = {10}/>
-                  </Grid>
-                
+                      </Grid>
+                    {/* </Grid>
+                  </Grid> */}
                 </div>
               </Card>
             </Paper>
           </Grid>
         </Grid>
+        <BookListHome/>
+        <br/>
+        <BookSoulsDef/>
+        <WhyShouldBookSouls/>
         </div>
     )
   }

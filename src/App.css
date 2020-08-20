@@ -27,6 +27,21 @@
 .App-link {
   color: #61dafb;
 }
+.vertical-line{
+
+  display: inline-block;
+
+  border-left: 1px solid #ccc;
+
+  margin: 0 10px;
+
+  height: 60px;
+
+}
+
+.AllBookSellBG{
+  background-color: #dde4e6 ;
+}
 
 @keyframes App-logo-spin {
   from {
