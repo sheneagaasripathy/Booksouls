@@ -67,7 +67,7 @@ export default class Login extends Component{
             <div>
                 {/* <center> */}
                 <Grid item xs={6} class = "grid">
-                    <Paper class = 'paper'>
+                    <Paper className = 'paper'>
                     <form onSubmit = {this.handleSubmit}>
                         <div>
                             <h1>
@@ -79,7 +79,7 @@ export default class Login extends Component{
                     name = "email"
                     placeholder = "Email"
                     autoFocus
-                    style = {{outlineColor: "crimson"}}
+                    style = {{outlineColor: "black"}}
                     label = "Email"
                     variant="outlined"
                     value = {this.state.email} 
@@ -111,7 +111,7 @@ export default class Login extends Component{
                     <Button
                     type = 'submit'
                     size = 'large'
-                    color = 'inherit'
+                    style = {{backgroundColor: '#8c8c8c'}}
                     >
                         Submit
                     </Button>
