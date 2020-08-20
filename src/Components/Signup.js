@@ -158,9 +158,11 @@ export default class Signup extends Component{
                 </div>
 {/* ------------------------------------------------------------- */}
                 <div style = {{fontSize: 12}}>
+                    <br/>
                     <input 
                     name = 'rememberMe'
                     type = 'checkbox' 
+                    id = 'check'
                     checked = {this.state.rememberMe}
                     onChange = {this.handleChange}
                     />
