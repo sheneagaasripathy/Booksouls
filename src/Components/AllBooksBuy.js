@@ -8,6 +8,10 @@ import Menu from '@material-ui/core/Menu';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import Slider from '@material-ui/core/Slider';
 import MenuItem from '@material-ui/core/MenuItem';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
@@ -51,17 +55,23 @@ const useStyles = makeStyles((theme) => ({
 
 function AllBookBuy() {
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [isFilter, setIsFilter] = React.useState(null);
+    const [value, setValue] = React.useState([200, 300]);
+    const [category, setCategory] = React.useState('None');
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    const handleClick = () => {
+        {!isFilter? (setIsFilter("true")):(setIsFilter(null))}
+        
+    }
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+      };
+    const handleCatChange = (event) => {
+        setCategory(event.target.value);
+      };
     return(
         <div className={classes.demo}>
+            { !isFilter ? (
             <Grid container spacing={1} >
                 <Grid item xs = {2}/>
                 <Grid item xs = {8} style ={{padding:40}}>
@@ -83,23 +93,10 @@ function AllBookBuy() {
                             }}
                             />
                             <Tooltip title="Filter">
-                                <IconButton aria-haspopup="true" onClick={handleClick} >
+                                <IconButton onClick = {handleClick} >
                                     <FilterListIcon/>
                                 </IconButton>
                             </Tooltip>
-                                <Menu
-                                    id="simple-menu"
-                                    anchorEl={anchorEl}
-                                    keepMounted
-                                    open={Boolean(anchorEl)}
-                                    onClose={handleClose}
-                                >
-                                    <MenuItem onClick={handleClose}>Sci-Fi</MenuItem>
-                                    <MenuItem onClick={handleClose}>Story</MenuItem>
-                                    <MenuItem onClick={handleClose}>Novels</MenuItem>
-                                    <MenuItem onClick={handleClose}>Comedy</MenuItem>
-                                    <MenuItem onClick={handleClose}>Comics</MenuItem>
-                                </Menu>
                             </div>
                             <div>
                                 <h2>Books for Sale</h2>
@@ -118,7 +115,7 @@ function AllBookBuy() {
                                         secondary="Descripition"
                                     />
                                     <ListItemSecondaryAction>
-                                        <Button>Info</Button>
+                                        <Button href = "/buyBook">Info</Button>
                                     </ListItemSecondaryAction>
                                     </ListItem>,
                             
@@ -129,6 +126,95 @@ function AllBookBuy() {
                 </Grid>
                 <Grid item xs = {2}/>
                 </Grid>
+            ):(
+                <Grid container spacing={1} >
+                <Grid item xs = {2} >
+                    <Card style ={{marginTop:40}}>
+                        <Paper style ={{padding:20}} class = "AllBookSellBG">
+                            <Typography id="range-slider" gutterBottom>
+                                Price range
+                            </Typography>
+                            <Slider
+                                max = {10000}
+                                min = {100 }
+                                value={value}
+                                onChange={handleChange}
+                                valueLabelDisplay="auto"
+                                aria-labelledby="range-slider"
+                                // getAriaValueText={valuetext}
+                            />
+                            <FormControl variant="filled" className={classes.formControl}>
+                                <InputLabel id="demo-simple-select-filled-label">Category</InputLabel>
+                                <Select
+                                labelId="demo-simple-select-filled-label"
+                                id="demo-simple-select-filled"
+                                value={category}
+                                onChange={handleCatChange}
+                                >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value={10}>Ten</MenuItem>
+                                <MenuItem value={20}>Twenty</MenuItem>
+                                <MenuItem value={30}>Thirty</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Paper>
+                    </Card>
+                </Grid>
+                <Grid item xs = {1}/>
+                <Grid item xs = {8} style ={{padding:40}}>
+                    <Card >
+                        <Paper style ={{padding:20}} class = "AllBookSellBG"> 
+                            <div align = "left" style = {{margin:40}}>
+                            <TextField
+                            className={classes.margin}
+                            id="input-with-icon-textfield"
+                            label="Search for Books"
+                            InputProps={{
+                                startAdornment: (
+                                <InputAdornment position="start">
+                                    <IconButton type="submit" aria-label="search">
+                                        <SearchIcon />
+                                    </IconButton>
+                                </InputAdornment>
+                                ),
+                            }}
+                            />
+                            <Tooltip title="Filter">
+                                <IconButton onClick = {handleClick}>
+                                    <FilterListIcon/>
+                                </IconButton>
+                            </Tooltip>
+                            </div>
+                            <div>
+                                <h2>Books for Sale</h2>
+                            </div>
+                            <List >
+                            {generate(
+                              
+                                    <ListItem>
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                        <FolderIcon />
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText
+                                        primary="Title"
+                                        secondary="Descripition"
+                                    />
+                                    <ListItemSecondaryAction>
+                                        <Button href = "/buyBook">Info</Button>
+                                    </ListItemSecondaryAction>
+                                    </ListItem>,
+                            )}
+                            </List>
+                        </Paper>
+                    </Card>
+                </Grid>
+                <Grid item xs = {1}/>
+                </Grid>
+            )}
           </div>
     )
 }

@@ -7,6 +7,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import EmailIcon from '@material-ui/icons/Email';
+import Logo from './Logo.png';
 
 
 const useStyles = makeStyles({
@@ -33,9 +34,9 @@ function BottomBar() {
                 <InstagramIcon />
                 <TwitterIcon/>
             </Grid>
-            <Grid item xs={8}>
-                <Typography variant="overline" align="center">
-                    [LOGO]<br/>
+            <Grid item xs={8} style = {{margin:10}}>
+                <Typography variant="overline" align="center" >
+                    <img src = {Logo} height="50" width="150" /><br/>
                     Copyrights <CopyrightIcon style={{ fontSize: 15 }}/> {Year}-{Year+1} <br/> Team Privacy
                 </Typography>
             </Grid>

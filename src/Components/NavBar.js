@@ -8,11 +8,16 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Logo from './Logo.png';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import BuySellHome from './BuySellHome';
 import AllBookBuy from './AllBooksBuy';
+import Login from './Login';
+import Signup from './Signup';
+import Buy from './Buy';
+import Sell from './Sell';
 
 
 
@@ -32,9 +37,10 @@ class NavBar extends Component {
                         <Toolbar style = {{color:"black"}}>
                         <Grid container spacing={1}>
                         <Grid item xs={2}>
+                        <IconButton href = "/home">
                             <LibraryBooksTwoToneIcon fontSize = "large">  </LibraryBooksTwoToneIcon>
-                            {/* <img src = {Logo} height="75" width="120" /> */}
-                            [Logo]
+                               <img src = {Logo} height="30" width="75" />
+                        </IconButton>
                         </Grid>
                         <Grid item xs={4}/>
                         <Grid item xs = {4}>
@@ -42,6 +48,7 @@ class NavBar extends Component {
                         {this.state.isLogin ? (
                             <>
                             <Grid item xs={1}>
+                                <br/>
                                 <Typography style = {{marginTop:"5"}}>
                                     <Button variant="outlined" color="white" href = "/login">
                                         Login
@@ -49,6 +56,7 @@ class NavBar extends Component {
                                 </Typography>
                             </Grid>
                             <Grid item xs={1}>
+                                <br/>
                                 <Typography>
                                     <Button variant="outlined" color="white" href = "/signup">
                                         Signup
@@ -57,12 +65,14 @@ class NavBar extends Component {
                             </Grid></>):
                             (<>
                                 <Grid item xs={1}>
+                                <br/>
                                 <Typography style = {{marginTop:"5"}}>
                                     <AccountCircleIcon fontSize = "large"/>
                                     Profile
                                 </Typography>
                             </Grid>
                             <Grid item xs={1}>
+                            <br/>
                                 <Typography>
                                     <Button variant="outlined" color="white" href = "/home">
                                         Signout
@@ -76,7 +86,11 @@ class NavBar extends Component {
                     <div>
                         <Switch>
                         <Route exact path={["/", "/home"]} component={BuySellHome} />
+                        <Route exact path={'/login'} component={Login} />
+                        <Route exact path={'/signup'} component={Signup} />
                         <Route exact path={'/buy'} component={AllBookBuy} />
+                        <Route exact path={'/sell'} component={Sell} />
+                        <Route exact path={'/buyBook'} component={Buy} />
                         </Switch>
                     </div>
                 </Router>
