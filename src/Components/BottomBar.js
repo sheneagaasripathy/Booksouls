@@ -12,19 +12,20 @@ import Logo from './Logo.png';
 
 const useStyles = makeStyles({
     appBar: {
-      top: 'auto',
+    //   top: 'auto',
       bottom: 0,
       backgroundColor:'#EECE5C',
       color: 'black'
     },
 });
 
+
 function BottomBar() {
     const classes = useStyles();
     let Year = new Date().getFullYear();
 
     return (
-        <AppBar position="static" className={classes.appBar}>
+        <AppBar position="flex-end" className={classes.appBar}>
             <Grid container spacing={1}>
             <Grid item xs={2}>
                 <br/>

@@ -4,7 +4,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Paper from '@material-ui/core/Paper';
-import Menu from '@material-ui/core/Menu';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -58,6 +57,7 @@ function AllBookBuy() {
     const [isFilter, setIsFilter] = React.useState(null);
     const [value, setValue] = React.useState([200, 300]);
     const [category, setCategory] = React.useState('None');
+    const [condition, setcondition] = React.useState('None');
 
     const handleClick = () => {
         {!isFilter? (setIsFilter("true")):(setIsFilter(null))}
@@ -69,6 +69,9 @@ function AllBookBuy() {
     const handleCatChange = (event) => {
         setCategory(event.target.value);
       };
+    const handleConChange = (event) => {
+        setcondition(event.target.value);
+      };
     return(
         <div className={classes.demo}>
             { !isFilter ? (
@@ -79,7 +82,6 @@ function AllBookBuy() {
                         <Paper style ={{padding:20}} class = "AllBookSellBG"> 
                             <div align = "left" style = {{margin:40}}>
                             <TextField
-                            className={classes.margin}
                             id="input-with-icon-textfield"
                             label="Search for Books"
                             InputProps={{
@@ -128,13 +130,17 @@ function AllBookBuy() {
                 </Grid>
             ):(
                 <Grid container spacing={1} >
+                <Grid item xs = {1}/>
                 <Grid item xs = {2} >
+                    
                     <Card style ={{marginTop:40}}>
                         <Paper style ={{padding:20}} class = "AllBookSellBG">
+                        <h2>Filter</h2>
                             <Typography id="range-slider" gutterBottom>
                                 Price range
                             </Typography>
                             <Slider
+                                
                                 max = {10000}
                                 min = {100 }
                                 value={value}
@@ -143,26 +149,48 @@ function AllBookBuy() {
                                 aria-labelledby="range-slider"
                                 // getAriaValueText={valuetext}
                             />
-                            <FormControl variant="filled" className={classes.formControl}>
-                                <InputLabel id="demo-simple-select-filled-label">Category</InputLabel>
+                            <br/><br/>
+                            <FormControl variant="filled" style = {{width:"80%"}}>
+                                <InputLabel id="Category">Category</InputLabel>
                                 <Select
-                                labelId="demo-simple-select-filled-label"
-                                id="demo-simple-select-filled"
+                                labelId="Category"
+                                id="Category"
                                 value={category}
                                 onChange={handleCatChange}
                                 >
                                 <MenuItem value="">
-                                    <em>None</em>
+                                    <em>All</em>
                                 </MenuItem>
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
+                                <MenuItem value={10}>Story</MenuItem>
+                                <MenuItem value={20}>Novel</MenuItem>
+                                <MenuItem value={30}>Sci-Fi</MenuItem>
+                                <MenuItem value={40}>Drama</MenuItem>
                                 </Select>
                             </FormControl>
+                            <br/><br/>
+                            <FormControl variant="filled" style = {{width:"80%"}}>
+                                <InputLabel id="Condition">Condition</InputLabel>
+                                <Select
+                                labelId="Condition"
+                                id="Condition"
+                                value={condition}
+                                onChange={handleConChange}
+                                >
+                                <MenuItem value="">
+                                    <em>All</em>
+                                </MenuItem>
+                                <MenuItem value={10}>Like New</MenuItem>
+                                <MenuItem value={20}>Good</MenuItem>
+                                <MenuItem value={30}>Average</MenuItem>
+                                <MenuItem value={40}>Used</MenuItem>
+                                </Select>
+                            </FormControl>
+                            <br/><br/><br/>
+                            <Button variant="outlined" type = "submit">Find</Button>
                         </Paper>
                     </Card>
                 </Grid>
-                <Grid item xs = {1}/>
+                
                 <Grid item xs = {8} style ={{padding:40}}>
                     <Card >
                         <Paper style ={{padding:20}} class = "AllBookSellBG"> 

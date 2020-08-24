@@ -18,6 +18,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Buy from './Buy';
 import Sell from './Sell';
+import Admin from './Admin';
 
 
 
@@ -91,6 +92,7 @@ class NavBar extends Component {
                         <Route exact path={'/buy'} component={AllBookBuy} />
                         <Route exact path={'/sell'} component={Sell} />
                         <Route exact path={'/buyBook'} component={Buy} />
+                        <Route exact path={'/admin'} component={Admin} />
                         </Switch>
                     </div>
                 </Router>

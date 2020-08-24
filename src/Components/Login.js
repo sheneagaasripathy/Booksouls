@@ -66,7 +66,10 @@ export default class Login extends Component{
         return(        
             <div>
                 {/* <center> */}
-                <Grid item xs={6} class = "grid">
+                <Grid container spacing={1} style = {{margin:20}} >
+                <Grid item xs = {5}/>
+                <Grid item xs = {1}/>
+                <Grid item xs={5} style = {{backgroundColor:"#8c8c8c"}}>
                     <Paper className = 'paper'>
                     <form onSubmit = {this.handleSubmit}>
                         <div>
@@ -118,6 +121,7 @@ export default class Login extends Component{
                 </div>
                 </form>
                     </Paper>
+                </Grid>
                 </Grid>
             </div>
     )
