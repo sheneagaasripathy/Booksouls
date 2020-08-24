@@ -67,19 +67,20 @@ class NavBar extends Component {
                             (<>
                                 <Grid item xs={1}>
                                 <br/>
-                                <Typography style = {{marginTop:"5"}}>
-                                    <AccountCircleIcon fontSize = "large"/>
-                                    Profile
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={1}>
-                            <br/>
                                 <Typography>
                                     <Button variant="outlined" color="white" href = "/home">
                                         Signout
                                     </Button>
                                 </Typography> 
+                                </Grid>
+                                <Grid item xs={1}>
+                                <br/>
+                                <Typography style = {{marginTop:"5"}}>
+                                    Profile
+                                    <AccountCircleIcon fontSize = "large"/>
+                                </Typography>
                             </Grid>
+                            
                             </>)}
                         </Grid>
                         </Toolbar>

@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {Paper, Grid, TextField, Button} from '@material-ui/core';
 import './LoginStyle.css';
+import image from './image.JPG'
+import image2 from './image2.JPG'
 
 const initialState ={
     email: "",
@@ -64,12 +66,14 @@ export default class Login extends Component{
     };
     render(){
         return(        
-            <div>
-                {/* <center> */}
-                <Grid container spacing={1} style = {{margin:20}} >
-                <Grid item xs = {5}/>
-                <Grid item xs = {1}/>
-                <Grid item xs={5} style = {{backgroundColor:"#8c8c8c"}}>
+            <div style = {{padding:30}}>
+                <Grid container spacing={1}  >
+                <Grid item xs = {7}>
+                    {/* <img src = "https://images.vexels.com/media/users/3/144860/isolated/preview/5128b7ff4b40f49cd6c0ce8698b9a19a-boy-reading-books-illustration-by-vexels.png" width = "40%" height = "80%"/> */}
+                    {/* <img src= {image} heigth = "30%" width = "30%"/> */}
+                    <img src= {image2} heigth = "50%" width = "50%"/>
+                </Grid>
+                <Grid item xs={4} style = {{backgroundColor:"#8c8c8c"}}>
                     <Paper className = 'paper'>
                     <form onSubmit = {this.handleSubmit}>
                         <div>

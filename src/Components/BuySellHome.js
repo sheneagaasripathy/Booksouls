@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   const style = {
     root: {
       minWidth: 275,
-      backgroundImage: `url("${BackgroundImg}")`,
+      backgroundImage: `url("https://i.pinimg.com/originals/04/5c/70/045c70e3dcdb99ec3fa50aebb6cc3668.jpg")`,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',

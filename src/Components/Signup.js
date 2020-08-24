@@ -96,6 +96,10 @@ export default class Signup extends Component{
     render(){
         return(
             <div>
+            <div class="split left">
+                
+                <img src = "https://images.vexels.com/media/users/3/144860/isolated/preview/5128b7ff4b40f49cd6c0ce8698b9a19a-boy-reading-books-illustration-by-vexels.png"/>
+            </div>
             <div class="split right">
                 <div>
                     <img src = "https://trello-attachments.s3.amazonaws.com/5f242206ad769616f788b51c/5f2c0770a901ff3661b8e866/b9d635dee3efd8d649a6fe527a363642/Untitled.png" height = "250" width = "350" />
@@ -179,10 +183,6 @@ export default class Signup extends Component{
 {/* ----------------------------------------------------------------------- */}
                 </div>
             </form>
-            </div>
-            <div class="split left">
-                
-                <img src = "https://images.vexels.com/media/users/3/144860/isolated/preview/5128b7ff4b40f49cd6c0ce8698b9a19a-boy-reading-books-illustration-by-vexels.png"/>
             </div>
             </div>
         );
