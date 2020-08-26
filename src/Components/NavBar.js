@@ -87,13 +87,13 @@ class NavBar extends Component {
                     </AppBar>
                     <div>
                         <Switch>
-                        <Route exact path={["/", "/home"]} component={BuySellHome} />
-                        <Route exact path={'/login'} component={Login} />
-                        <Route exact path={'/signup'} component={Signup} />
-                        <Route exact path={'/buy'} component={AllBookBuy} />
-                        <Route exact path={'/sell'} component={Sell} />
-                        <Route exact path={'/buyBook'} component={Buy} />
-                        <Route exact path={'/admin'} component={Admin} />
+                            <Route exact path={["/", "/home"]} component={BuySellHome} />
+                            <Route exact path={'/login'} component={Login} />
+                            <Route exact path={'/signup'} component={Signup} />
+                            <Route exact path={'/buy'} component={AllBookBuy} />
+                            <Route exact path={'/sell'} component={Sell} />
+                            <Route exact path={'/buyBook'} component={Buy} />
+                            <Route exact path={'/admin'} component={Admin} />
                         </Switch>
                     </div>
                 </Router>
