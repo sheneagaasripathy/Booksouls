@@ -6,7 +6,8 @@ import NavBar from "./NavBar";
 const style={
     root:{
         minWidth:450,
-        backgroundcolor:"#fafafa",
+        
+        backgroundColor:"#424242",
         marginTop:60,
         color:'#212121'
     },
@@ -24,26 +25,44 @@ const style={
 export default class Buy extends Component{
     render(){
         return(
-          <Grid container>
-            <Grid item xs={12}>
-          <Card style={style.card}>
-
+          
             <Grid container>
-              {/* <NavBar/> */}
-              {/* <Card style={style.paper}> */}
-        <Grid item xs={4}/>
+              
+        <Grid item xs={3}/>
         <Grid item xs={1}/>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
          
           <Card style={style.root}>
+            <Paper style={{margin:30,}}>
+            {/* <Paper style={{margin:30,backgroundcolor:""}}> */}
               <CardContent>
-                <form >
+                {/* <form > */}
+                <Grid container spacing={3}>
+                  <Grid item xs={6}>
+
+                  </Grid>
+                </Grid>
                   
                   <Grid container spacing={1}>
                       <Grid item xs={12}>
-                        <Typography component="h1" variant="h2" >Book Name</Typography>
-                      </Grid>
+                        {/* <Typography component="h1" variant="h5" TextField="center">Book Name</Typography> */}
+                        <div>
+                          <h4 style={{textAlign:"left"}}>Book name :-</h4>
 
+                          <h4 style={{textAlign:"left"}}>Author :-</h4>
+
+                          <h4 style={{textAlign:"left"}}>ISBN Number :-</h4>
+
+                          <h4 style={{textAlign:"left"}}>Published :-</h4>
+
+                          <h4 style={{textAlign:"left"}}>Usage :-</h4>
+
+                          <h4 style={{textAlign:"left"}}>Price :-</h4>
+
+
+                        </div>
+                      </Grid>
+{/* 
                       <Grid item xs={6} >
                         <FormControl >
                           <TextField
@@ -124,7 +143,7 @@ export default class Buy extends Component{
                                autoFocus
                          />
                         </FormControl>
-                      </Grid>
+                      </Grid> */}
 
                       
                       <Grid item xs={2}>
@@ -155,8 +174,9 @@ export default class Buy extends Component{
                     
                    </Grid> 
                  
-                 </form>
+                 {/* </form> */}
               </CardContent>
+              </Paper>
         </Card>
         
         </Grid>
@@ -166,9 +186,6 @@ export default class Buy extends Component{
 
       
       
-      </Card>
-      </Grid>
-      </Grid>
       
         )
     }
