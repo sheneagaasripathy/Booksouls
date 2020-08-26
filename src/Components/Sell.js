@@ -1,25 +1,24 @@
 import React, {Component} from "react";
-import{Card,CardContent,Typography,FormControl,TextField,Grid,} from "@material-ui/core";
+import{Card,CardContent,Typography,FormControl,TextField,Grid,Paper} from "@material-ui/core";
 import Button from '@material-ui/core/Button'
 import NavBar from "./NavBar";
 import { green } from "@material-ui/core/colors";
 
 const style={
+    
     root:{
-        minWidth:450,
-        backgroundcolor:"#fafafa",
-        marginTop:50,
-        color:'#212121'
-    },
-
-    // button:{
-    //     color:green
-    // },
-
-    root0:{
-      backgroundcolor:"#1565c0",
+      minWidth:450,
       
-    }
+      backgroundColor:"#424242",
+      marginTop:60,
+      color:'#212121'
+  },
+  card:{
+    minWidth:500,
+    backgroundcolor:'#212121',
+    color:"#424242",
+    margin:50
+  }
 
     
 }
@@ -32,11 +31,11 @@ export default class Sell extends Component{
           
           
             <Grid container>
-              {/* <NavBar/> */}
                 <Grid item xs={4}/>
                  <Grid item xs={1}/>
                  <Grid item xs={4}>
                  <Card style={style.root}>
+                   <Paper style={{margin:30,}}>
           
               <CardContent>
                 <form >
@@ -216,6 +215,7 @@ export default class Sell extends Component{
                   
                 </form>
               </CardContent>
+              </Paper>
         </Card>
         </Grid>
         <Grid item xs={4}/>
