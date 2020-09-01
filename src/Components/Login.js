@@ -11,12 +11,20 @@ export default class Login extends Component{
             email: "",
             username : "",
             password: "",
+            repassword: "",
             emailError: "",
             passwordError: "",
+            repasswordError: "",
             fogot:false,
             codeSubmit : false,
-            code : ""
+            code : "",
+            updatePassword:false,
         }
+    }
+    handelUpdatePassword = () => {
+        this.setState({
+            updatePassword:true
+        })
     }
     UserNameOrEmail = (e) => {
         if(!this.state.email && !this.state.password ){
@@ -86,12 +94,32 @@ export default class Login extends Component{
             })
         }
     }
+    RePasswordValidate = (e) => {
+        this.setState ({
+            repassword:e.target.value
+        })
+        if (!this.state.password) {
+            this.setState ({
+                repasswordError:"Reenter the password!"
+            }) 
+        }
+        else if(this.state.password !== this.state.repassword ){
+            this.setState ({
+                repasswordError:"Check the password"
+            }) 
+        }
+        else {
+            this.setState ({
+                repasswordError:""
+            }) 
+        }
+    }
     render(){
         return(   
             !this.state.fogot ? (   
             <div style = {{padding:30}}>
                 <Grid container spacing={1}  >
-                <Grid item xs = {7}>
+                <Grid item xs = {7} style = {{marginTop:50}}>
                     <img src= {image2} heigth = "50%" width = "50%" alt = "Background Books"/>
                 </Grid>
                 <Grid item xs={4} style = {{backgroundColor:"#8c8c8c"}}>
@@ -138,7 +166,7 @@ export default class Login extends Component{
                     </Button>
                 </div>
                 <h5>A New User <a href = "/signup">Create an Account</a></h5>
-                <h5>Fogot password <a onClick = {this.fogotChange}>Click here</a></h5>
+                <h5>Fogot password <u style = {{color:"blue"}}><a onClick = {this.fogotChange}>Click here</a></u></h5>
                 </form>
                     </Paper>
                 </Grid>
@@ -182,7 +210,7 @@ export default class Login extends Component{
                 </Grid>
                 </Grid>
                 </div>
-            ):(
+            ):(!this.state.updatePassword ? (
                 <div style = {{padding:20}}>
                 <Grid container spacing={1}  >
                 <Grid item xs = {7}>
@@ -210,6 +238,7 @@ export default class Login extends Component{
                 <Button
                     size = 'large'
                     style = {{backgroundColor: '#8c8c8c'}}
+                    onClick = {this.handelUpdatePassword}
                     >
                         Submit
                     </Button>
@@ -218,6 +247,64 @@ export default class Login extends Component{
                 </Grid>
                 </Grid>
                 </div>
+            ):(
+                <div style = {{padding:20}}>
+                <Grid container spacing={1}  >
+                <Grid item xs = {7}>
+                    <img src= {image2} heigth = "50%" width = "50%"/>
+                </Grid>
+                <Grid item xs={4} style = {{backgroundColor:"#8c8c8c"}}>
+                    <Paper style = {{padding : 30}}>
+                    <form onSubmit = {this.handleSubmit}>
+                        <div>
+                            <h1>
+                                Update Password 
+                            </h1>
+                        </div>
+                        <div>
+                    <TextField 
+                    type = 'password'
+                    variant="outlined"
+                    size="small"
+                    name = "password"
+                    placeholder = "password"
+                    helperText ={this.state.passwordError? (<span style = {{color: "red"}}>{this.state.passwordError}</span>):("Please Enter Your Password")}
+                    value = {this.state.password} 
+                    onChange = {this.PasswordValidate} 
+                    onClick = {this.PasswordValidate} 
+                    style = {{width: 300}}
+                    />
+                </div>
+{/* --------------------------------------------------------------------------- */}
+                <div>
+                    <TextField 
+                    type = 'password'
+                    name = "repassword"
+                    size="small"
+                    variant="outlined"
+                    helperText ={this.state.repasswordError? (<span style = {{color: "red"}}>{this.state.repasswordError}</span>):("Please Enter Your Password")}
+                    placeholder = "Reenter the password"
+                    value = {this.state.repassword} 
+                    onChange = {this.RePasswordValidate} 
+                    onClick = {this.RePasswordValidate}
+                    style = {{width: 300}}
+                    />
+                </div>
+{/* ------------------------------------------------------------- */}
+                <Button
+                    size = 'large'
+                    style = {{backgroundColor: '#8c8c8c'}}
+                    href = "/home"
+                    // onClick={alert("Hello World!")}
+                    >
+                        Update
+                    </Button>
+                </form>
+                </Paper>
+                </Grid>
+                </Grid>
+                </div>
+            )
             )
             )
             

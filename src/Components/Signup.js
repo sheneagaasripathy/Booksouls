@@ -3,35 +3,26 @@ import './SignupStyle.css';
 import {Paper,  Grid, TextField, Button} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 
-
-// const initialState ={
-//     name: "",
-//     email: "",
-//     address:"",
-//     password: "",
-//     repassword: "",
-//     nameError: "",
-//     emailError: "",
-//     passwordError: "",
-//     repasswordError:"",
-//     addressError:"",
-//     rememberMe: false,
-// }
 export default class Signup extends Component{
     constructor(){
         super()
+        localStorage.setItem('user',true)
+        // localStorage.removeItem('user')
         this.state = {
-            name: "",
+            name: "Hello",
             email: "",
             address:"",
             password: "",
             repassword: "",
             nameError: "",
             emailError: "",
+            oldPassword:"",
+            oldPasswordError:"",
             passwordError: "",
             repasswordError:"",
             addressError:"",
             rememberMe: false,
+            UpdatePassword : false,
         }
     }
     handleChange = event =>{
@@ -43,27 +34,12 @@ export default class Signup extends Component{
         })
     };
 
-
-    NameValidate = (e) => {
-        this.setState ({
-            name:e.target.value
+    HandleUpdatePassword = () => {
+        this.setState({
+            UpdatePassword:true
         })
-        if(!this.state.name){
-            this.setState ({
-                nameError:"This Field is Required"
-            })
-        }
-        else if (this.state.name.length < 20) {
-            this.setState ({
-                nameError:""
-            })
-        }
-        else if (this.state.name.length > 20) {
-            this.setState ({
-                nameError:"Better to give a short name"
-            })
-        }
     }
+
     AddressValidate = (e) => {
         this.setState ({
             address:e.target.value
@@ -105,6 +81,27 @@ export default class Signup extends Component{
         }
     }  
 
+    PasswordValidate2 = (e) => {
+        this.setState ({
+            oldPassword:e.target.value
+        })
+        if(!this.state.password){
+            this.setState ({
+                oldPasswordError:"Enter the password!"
+            }) 
+          
+        }else if(this.state.password.length < 5 || this.state.password.length >25 ){
+            this.setState ({
+                oldPasswordError:"Password must have 5 to 25 characters"
+            }) 
+        
+        }
+        else{
+            this.setState ({
+                oldPasswordError:""
+            }) 
+        }
+    }
 
     PasswordValidate = (e) => {
         this.setState ({
@@ -170,6 +167,7 @@ export default class Signup extends Component{
     };
     render(){
         return(
+            !localStorage.getItem('user') ? (
             <Grid container spacing={1} style = {{marginTop:30}}>
                 <Grid item xs = {7}/>
                 <Grid item xs = {4} style = {{marginBottom:15}}>
@@ -185,10 +183,9 @@ export default class Signup extends Component{
                     variant="outlined"
                     placeholder = "Username"
                     helperText ={this.state.nameError? (<sapn style = {{color: "red"}}>{this.state.nameError}</sapn>):("Please Enter Your Name")}
-                    value = {this.state.name} 
-                    size="small"
                     onChange = {this.NameValidate}
                     onClick = {this.NameValidate} 
+                    size="small"
                     style = {{width: 300}}
                     />
 {/* ------------------------------------------------------------------ */}
@@ -294,6 +291,157 @@ export default class Signup extends Component{
             </Grid>
             <Grid item xs = {1}/>
             </Grid>
+            ):( !this.state.UpdatePassword ? (
+                <Grid container spacing={1} style = {{marginTop:30}}>
+                <Grid item xs = {7}/>
+                <Grid item xs = {4} style = {{marginBottom:15}}>
+                <Card style = {{backgroundColor:"#8c8c8c"}}>
+                <Paper style = {{margin:10}}>
+            <form onSubmit = {this.handleSubmit}>
+                <br/>
+                <h2>Edit Your Deatils</h2>
+                    <TextField 
+                    Required
+                    name = "name"
+                    variant="outlined"
+                    placeholder = "Username"
+                    helperText ="Your Username can't to be Change"
+                    value = {this.state.name} 
+                    size="small"
+                    style = {{width: 300}}
+                    />
+{/* ------------------------------------------------------------------ */}
+                <div>
+                    <TextField 
+                    Required
+                    name = "email"
+                    size="small"
+                    variant="outlined"
+                    placeholder = "Email"
+                    helperText ={this.state.emailError? (<span style = {{color: "red"}}>{this.state.emailError}</span>):("Update Your e-mail if there any changes")}
+                    value = {this.state.email} 
+                    onChange = {this.EmailValidate} 
+                    onClick = {this.EmailValidate} 
+                    style = {{width: 300}}
+                    />
+                </div>
+{/* --------------------------------------------------------------------------- */}
+                <div>
+                    <TextField 
+                    Required
+                    name = "Address"
+                    size="small"
+                    variant="outlined"
+                    placeholder = "Address"
+                    helperText ={this.state.addressError? (<span style = {{color: "red"}}>{this.state.addressError}</span>):("Update Your Address if there any changes")}
+                    value = {this.state.address} 
+                    onChange = {this.AddressValidate} 
+                    onClick = {this.AddressValidate} 
+                    style = {{width: 300}}
+                    />
+                </div>
+{/* ------------------------------------------------------------------------------- */}
+
+                <div>
+                <TextField
+                    id="date"
+                    variant="outlined"
+                    type="date"
+                    size="small"
+                    helperText = "Update your Date of Birth if there any changes"
+                    style = {{width: 300}}
+                />
+                </div>
+
+
+{/* ------------------------------------------------------------- */}
+               
+                <h5>If you want to change the password <u style = {{color:"BLUE"}}><a onClick = {this.HandleUpdatePassword}>Click Here</a></u></h5>
+{/* ------------------------------------------------------------------ */}
+
+                <div>
+                    <Button
+                    type = 'submit'
+                    >
+                        Update
+                    </Button>
+{/* ----------------------------------------------------------------------- */}
+                </div>  
+            </form>
+            </Paper>
+            </Card>
+            </Grid>
+            <Grid item xs = {1}/>
+            </Grid>
+            ):(
+                <Grid container spacing={1} style = {{marginTop:30}}>
+                <Grid item xs = {7}/>
+                <Grid item xs = {4} style = {{marginBottom:15}}>
+                <Card style = {{backgroundColor:"#8c8c8c"}}>
+                <Paper style = {{margin:10}}>
+            <form onSubmit = {this.handleSubmit}>
+                <br/>
+                <h2>Edit Your Password</h2>
+                <div>
+                    <TextField 
+                    type = 'password'
+                    variant="outlined"
+                    size="small"
+                    name = "Old password"
+                    placeholder = "Old password"
+                    helperText ={this.state.oldPasswordError? (<span style = {{color: "red"}}>{this.state.oldPasswordError}</span>):("Please Enter Your Old Password")}
+                    value = {this.state.oldPassword} 
+                    onChange = {this.PasswordValidate2} 
+                    onClick = {this.PasswordValidate2} 
+                    style = {{width: 300}}
+                    />
+                </div>
+{/* --------------------------------------------------------------------------- */}
+                <div>
+                    <TextField 
+                    type = 'password'
+                    variant="outlined"
+                    size="small"
+                    name = "New Password"
+                    placeholder = "New Password"
+                    helperText ={this.state.passwordError? (<span style = {{color: "red"}}>{this.state.passwordError}</span>):("Please Enter Your New Password")}
+                    value = {this.state.password} 
+                    onChange = {this.PasswordValidate} 
+                    onClick = {this.PasswordValidate} 
+                    style = {{width: 300}}
+                    />
+                </div>
+{/* --------------------------------------------------------------------------- */}
+                <div>
+                    <TextField 
+                    type = 'password'
+                    name = "repassword"
+                    size="small"
+                    variant="outlined"
+                    helperText ={this.state.repasswordError? (<span style = {{color: "red"}}>{this.state.repasswordError}</span>):("Please Enter Your Password")}
+                    placeholder = "Reenter the password"
+                    value = {this.state.repassword} 
+                    onChange = {this.RePasswordValidate} 
+                    onClick = {this.RePasswordValidate}
+                    style = {{width: 300}}
+                    />
+                </div>
+{/* ------------------------------------------------------------- */}
+                <div>
+                    <Button
+                    type = 'submit'
+                    >
+                        Update
+                    </Button>
+{/* ----------------------------------------------------------------------- */}
+                </div>  
+            </form>
+            </Paper>
+            </Card>
+            </Grid>
+            <Grid item xs = {1}/>
+            </Grid>
+            ))
         );
     }
 }
