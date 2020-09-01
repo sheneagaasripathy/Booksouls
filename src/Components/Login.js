@@ -1,77 +1,98 @@
 import React,{Component} from 'react';
 import {Paper, Grid, TextField, Button} from '@material-ui/core';
 import './LoginStyle.css';
-import image from './image.JPG'
 import image2 from './image2.JPG'
 
-const initialState ={
-    email: "",
-    password: "",
-    emailError: "",
-    passwordError: "",
-}
 
 export default class Login extends Component{
-    state = initialState;
+    constructor(){
+        super()
+        this.state = {
+            email: "",
+            username : "",
+            password: "",
+            emailError: "",
+            passwordError: "",
+            fogot:false,
+            codeSubmit : false,
+            code : ""
+        }
+    }
+    UserNameOrEmail = (e) => {
+        if(!this.state.email && !this.state.password ){
+            this.setState({
+                emailError : "This Field is Required"
+            })
+        }
+        else if (e.target.value.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ){
+            this.setState({
+                email : e.target.value,
+                emailError : ""
+            })
+        }
+        else {
+            this.setState({
+                username : e.target.value,
+                emailError : ""
+            })
+        }
+    }
 
-    handleChange = event =>{
-        const isCheckbox = event.target.type === 'checkbox';
+    fogotChange = () => {
         this.setState({
-            [event.target.name]: isCheckbox 
-            ? event.target.checked 
-            : event.target.value
+            fogot : true
         })
-    };
+    }
+    isCodeSubmit = () => {
+        this.setState({
+            codeSubmit : true
+        })
+    }
+    CodeChange = (e) => {
+        this.setState({
+            code : e.target.value
+        })
+    }
 
-
-    validate = () => {
-        let emailError = "";
-        let passwordError = "";      
-
-//-----------------------------------------------------------
-        
+    UserNameValidate = (e) => {
+        this.setState({
+            email : e.target.value
+        })
         if(!this.state.email){
-            emailError = "* Required E-mail";
-        }else{
-            if (!this.state.email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ){
-                emailError = "invalid Email";
-            };
-        }        
+            this.setState({
+                emailError : "Please Enter E-mail/Username"
+            })
+        }
+        else {
+            this.setState({
+                emailError : ""
+            })
+        }
 
-        //------------------------------------------------------
+    }
+
+    PasswordValidate = (e) =>{
+        this.setState({
+            password : e.target.value
+        })
         if(!this.state.password){
-            passwordError = "Enter the password!";
-        }       
-
-//--------------------------------------------------------------------------
-        if(emailError || passwordError){
-            this.setState({emailError, passwordError});
-            return false;
+            this.setState({
+                passwordError : "Please Enter your Password"
+            })
         }
-        return true;
-    };
-
-
-    //------------------------------------------------------------------
-
-    handleSubmit = (event) =>{
-        event.preventDefault();
-        const isValid = this.validate();
-        if (isValid){
-            console.log(this.state);
-            //clear form
-            this.setState(initialState);
-
+        else {
+            this.setState({
+                passwordError : ""
+            })
         }
-    };
+    }
     render(){
-        return(        
+        return(   
+            !this.state.fogot ? (   
             <div style = {{padding:30}}>
                 <Grid container spacing={1}  >
                 <Grid item xs = {7}>
-                    {/* <img src = "https://images.vexels.com/media/users/3/144860/isolated/preview/5128b7ff4b40f49cd6c0ce8698b9a19a-boy-reading-books-illustration-by-vexels.png" width = "40%" height = "80%"/> */}
-                    {/* <img src= {image} heigth = "30%" width = "30%"/> */}
-                    <img src= {image2} heigth = "50%" width = "50%"/>
+                    <img src= {image2} heigth = "50%" width = "50%" alt = "Background Books"/>
                 </Grid>
                 <Grid item xs={4} style = {{backgroundColor:"#8c8c8c"}}>
                     <Paper className = 'paper'>
@@ -84,18 +105,14 @@ export default class Login extends Component{
                 <div>
                     <TextField 
                     name = "email"
-                    placeholder = "Email"
-                    autoFocus
+                    placeholder = "Username/E-mail"
                     style = {{outlineColor: "black"}}
-                    label = "Email"
+                    helperText = {this.state.emailError?(<span style = {{color: "red"}}>{this.state.emailError}</span>):("Please Enter Your Username/E-mail")}
+                    label = "Username/E-mail"
                     variant="outlined"
-                    value = {this.state.email} 
-                    onChange = {this.handleChange}
+                    onChange = {this.UserNameOrEmail}
+                    onChange = {this.UserNameValidate}
                     />
-    
-                    <div style = {{fontSize: 12, color: "red"}}>
-                    {this.state.emailError}
-                    </div>
                     <br/><br/>
                 </div>
 
@@ -105,13 +122,10 @@ export default class Login extends Component{
                     name = "password"
                     label="password"
                     placeholder = "password"
+                    helperText = {this.state.passwordError?(<span style = {{color: "red"}}>{this.state.passwordError}</span>):("Please Enter Your password")}
                     variant="outlined"
-                    value = {this.state.repassword} 
-                    onChange = {this.handleChange} 
+                    onChange = {this.PasswordValidate}
                     />
-                    <div style = {{fontSize: 12, color: "red"}}>
-                    {this.state.passwordError}
-                    </div>
                     <br/><br/>
                 </div>
                 <div>
@@ -123,11 +137,90 @@ export default class Login extends Component{
                         Submit
                     </Button>
                 </div>
+                <h5>A New User <a href = "/signup">Create an Account</a></h5>
+                <h5>Fogot password <a onClick = {this.fogotChange}>Click here</a></h5>
                 </form>
                     </Paper>
                 </Grid>
                 </Grid>
             </div>
+            ):( !this.state.codeSubmit ? (
+                <div style = {{padding:20}}>
+                <Grid container spacing={1}  >
+                <Grid item xs = {7}>
+                    <img src= {image2} heigth = "50%" width = "50%"/>
+                </Grid>
+                <Grid item xs={4} style = {{backgroundColor:"#8c8c8c"}}>
+                    <Paper style = {{padding : 30}}>
+                    <form onSubmit = {this.handleSubmit}>
+                        <div>
+                            <h1>
+                                Fogotten Password 
+                            </h1>
+                        </div>
+                <div>
+                    <TextField 
+                    name = "email"
+                    placeholder = "Username/E-mail"
+                    helperText = {this.state.emailError?(<span style = {{color: "red"}}>{this.state.emailError}</span>):("Please Enter Your Username/E-mail")}
+                    label = "Username/E-mail"
+                    variant="outlined"
+                    onChange = {this.UserNameOrEmail}
+                    onChange = {this.UserNameValidate}
+                    />
+                    <br/><br/>
+                </div>
+                <Button
+                    size = 'large'
+                    style = {{backgroundColor: '#8c8c8c'}}
+                    onClick = {this.isCodeSubmit}
+                    >
+                        Send Code to the e-mail
+                    </Button>
+                </form>
+                </Paper>
+                </Grid>
+                </Grid>
+                </div>
+            ):(
+                <div style = {{padding:20}}>
+                <Grid container spacing={1}  >
+                <Grid item xs = {7}>
+                    <img src= {image2} heigth = "50%" width = "50%"/>
+                </Grid>
+                <Grid item xs={4} style = {{backgroundColor:"#8c8c8c"}}>
+                    <Paper style = {{padding : 30}}>
+                    <form onSubmit = {this.handleSubmit}>
+                        <div>
+                            <h1>
+                                Varification 
+                            </h1>
+                        </div>
+                <div>
+                <TextField 
+                    Required
+                    name = "code"
+                    variant="outlined"
+                    placeholder = "code"
+                    helperText = "Enter Your varification Code"
+                    onChange = {this.CodeChange}
+                    />
+                    <br/><br/>
+                </div>
+                <Button
+                    size = 'large'
+                    style = {{backgroundColor: '#8c8c8c'}}
+                    >
+                        Submit
+                    </Button>
+                </form>
+                </Paper>
+                </Grid>
+                </Grid>
+                </div>
+            )
+            )
+            
     )
 }
 }

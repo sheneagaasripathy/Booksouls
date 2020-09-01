@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import AirportShuttleOutlinedIcon from '@material-ui/icons/AirportShuttleOutlined';
 import Typography from '@material-ui/core/Typography';

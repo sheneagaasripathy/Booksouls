@@ -1,23 +1,39 @@
 import React,{Component} from 'react';
 import './SignupStyle.css';
-import {Paper, Grid, TextField, Button} from '@material-ui/core';
+import {Paper,  Grid, TextField, Button} from '@material-ui/core';
+import Card from '@material-ui/core/Card';
 
 
-const initialState ={
-    name: "",
-    email: "",
-    password: "",
-    repassword: "",
-    nameError: "",
-    emailError: "",
-    passwordError: "",
-    repasswordError:"",
-    rememberMe: false,
-}
-
+// const initialState ={
+//     name: "",
+//     email: "",
+//     address:"",
+//     password: "",
+//     repassword: "",
+//     nameError: "",
+//     emailError: "",
+//     passwordError: "",
+//     repasswordError:"",
+//     addressError:"",
+//     rememberMe: false,
+// }
 export default class Signup extends Component{
-    state = initialState;
-
+    constructor(){
+        super()
+        this.state = {
+            name: "",
+            email: "",
+            address:"",
+            password: "",
+            repassword: "",
+            nameError: "",
+            emailError: "",
+            passwordError: "",
+            repasswordError:"",
+            addressError:"",
+            rememberMe: false,
+        }
+    }
     handleChange = event =>{
         const isCheckbox = event.target.type === 'checkbox';
         this.setState({
@@ -28,141 +44,228 @@ export default class Signup extends Component{
     };
 
 
-    validate = () => {
-        let nameError =  "";
-        let emailError = "";
-        let passwordError = "";
-        let repasswordError = "";
-
-        
-
-        //-----------------------------------------
-
+    NameValidate = (e) => {
+        this.setState ({
+            name:e.target.value
+        })
         if(!this.state.name){
-            nameError = "Please enter your name";
-        }else if (this.state.name.length > 20) {
-            nameError = "Better to give a short name";
+            this.setState ({
+                nameError:"This Field is Required"
+            })
         }
-//-----------------------------------------------------------
-        
+        else if (this.state.name.length < 20) {
+            this.setState ({
+                nameError:""
+            })
+        }
+        else if (this.state.name.length > 20) {
+            this.setState ({
+                nameError:"Better to give a short name"
+            })
+        }
+    }
+    AddressValidate = (e) => {
+        this.setState ({
+            address:e.target.value
+        })
+        if(!this.state.address){
+            this.setState ({
+                addressError:"This Field is Required"
+            })
+        }
+        else if (this.state.address.length < 10) {
+            this.setState ({
+                addressError:"Please Fill fully Address"
+            })
+        }
+        else if (this.state.address.length > 20) {
+            this.setState ({
+                addressError:""
+            })
+        }
+    }
+    EmailValidate = (e) => {
+        this.setState ({
+            email:e.target.value
+        })
         if(!this.state.email){
-            emailError = "* Required E-mail";
-        }else{
-            if (!this.state.email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ){
-                emailError = "invalid Email";
-            };
-        }        
+            this.setState ({
+                emailError:"e-mail id Required"
+            })
+        }
+        else if  (this.state.email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ){
+                this.setState ({
+                    emailError:""
+                })
+        }
+        else{
+            this.setState ({
+                emailError:"invalid Email"
+            }) 
+        }
+    }  
 
-        //------------------------------------------------------
+
+    PasswordValidate = (e) => {
+        this.setState ({
+            password:e.target.value
+        })
         if(!this.state.password){
-            passwordError = "Enter the password!";
+            this.setState ({
+                passwordError:"Enter the password!"
+            }) 
+          
         }else if(this.state.password.length < 5 || this.state.password.length >25 ){
-            passwordError = "Password must have 5 to 25 characters";
-        }
+            this.setState ({
+                passwordError:"Password must have 5 to 25 characters"
+            }) 
         
-        //--------------------------------------------------------------
-        if (!this.state.password) {
-            repasswordError = ""
-        }else if(!this.state.repassword){
-            repasswordError = "Reenter the password!";
-        }else if(this.state.password !== this.state.repassword ){
-            repasswordError = "Check the password";
         }
-        
+        else{
+            this.setState ({
+                passwordError:""
+            }) 
+        }
+    }
 
-//--------------------------------------------------------------------------
-        if(emailError || nameError || passwordError || repasswordError ){
-            this.setState({emailError, nameError, passwordError, repasswordError});
-            return false;
+    RePasswordValidate = (e) => {
+        this.setState ({
+            repassword:e.target.value
+        })
+        if (!this.state.password) {
+            this.setState ({
+                repasswordError:"Reenter the password!"
+            }) 
         }
-        return true;
-    };
+        else if(this.state.password !== this.state.repassword ){
+            this.setState ({
+                repasswordError:"Check the password"
+            }) 
+        }
+        else {
+            this.setState ({
+                repasswordError:""
+            }) 
+        }
+    }
+
+    // validate = () => {
+    //     if( this.state.emailError ||  this.state.nameError ||  this.state.passwordError ||  this.state.repasswordError ){
+    //         return false;
+    //     }
+    //     return true;
+    // };
 
 
     //------------------------------------------------------------------
 
     handleSubmit = (event) =>{
         event.preventDefault();
-        const isValid = this.validate();
-        if (isValid){
+        // const isValid = this.validate();
+        // if (isValid){
             console.log(this.state);
-            //clear form
-            this.setState(initialState);
+            
 
-        }
+        // }
     };
-
-
     render(){
         return(
-            <div>
-            <div class="split left">
-                
-                <img src = "https://images.vexels.com/media/users/3/144860/isolated/preview/5128b7ff4b40f49cd6c0ce8698b9a19a-boy-reading-books-illustration-by-vexels.png"/>
-            </div>
-            <div class="split right">
-                <div>
-                    <img src = "https://trello-attachments.s3.amazonaws.com/5f242206ad769616f788b51c/5f2c0770a901ff3661b8e866/b9d635dee3efd8d649a6fe527a363642/Untitled.png" height = "250" width = "350" />
-                </div>
+            <Grid container spacing={1} style = {{marginTop:30}}>
+                <Grid item xs = {7}/>
+                <Grid item xs = {4} style = {{marginBottom:15}}>
+                <Card style = {{backgroundColor:"#8c8c8c"}}>
+                <Paper style = {{margin:10}}>
             <form onSubmit = {this.handleSubmit}>
-
-                <div>
+                <br/>
+                <h2>Creat an Account</h2>
                     <TextField 
+                    Required
                     name = "name"
                     autoFocus
-                    placeholder = "Name"
+                    variant="outlined"
+                    placeholder = "Username"
+                    helperText ={this.state.nameError? (<sapn style = {{color: "red"}}>{this.state.nameError}</sapn>):("Please Enter Your Name")}
                     value = {this.state.name} 
-                    onChange = {this.handleChange} 
+                    size="small"
+                    onChange = {this.NameValidate}
+                    onClick = {this.NameValidate} 
+                    style = {{width: 300}}
                     />
-                </div>
-
-                <div style = {{fontSize: 12, color: "red"}}>
-                    {this.state.nameError}
-                </div>
 {/* ------------------------------------------------------------------ */}
                 <div>
                     <TextField 
+                    Required
                     name = "email"
+                    size="small"
+                    variant="outlined"
                     placeholder = "Email"
+                    helperText ={this.state.emailError? (<span style = {{color: "red"}}>{this.state.emailError}</span>):("Please Enter Your e-mail")}
                     value = {this.state.email} 
-                    onChange = {this.handleChange} 
+                    onChange = {this.EmailValidate} 
+                    onClick = {this.EmailValidate} 
+                    style = {{width: 300}}
                     />
-                </div>
-
-                <div style = {{fontSize: 12, color: "red"}}>
-                    {this.state.emailError}
                 </div>
 {/* --------------------------------------------------------------------------- */}
                 <div>
                     <TextField 
-                    type = 'password'
-                    name = "password"
-                    placeholder = "password"
-                    value = {this.state.password} 
-                    onChange = {this.handleChange} 
+                    Required
+                    name = "Address"
+                    size="small"
+                    variant="outlined"
+                    placeholder = "Address"
+                    helperText ={this.state.addressError? (<span style = {{color: "red"}}>{this.state.addressError}</span>):("Please Enter Your Address")}
+                    value = {this.state.address} 
+                    onChange = {this.AddressValidate} 
+                    onClick = {this.AddressValidate} 
+                    style = {{width: 300}}
                     />
                 </div>
-                
-                <div style = {{fontSize: 12, color: "red"}}>
-                    {this.state.passwordError}
+{/* ------------------------------------------------------------------------------- */}
+
+                <div>
+                <TextField
+                    id="date"
+                    variant="outlined"
+                    type="date"
+                    size="small"
+                    helperText = " Please Enter your Date of Birth"
+                    style = {{width: 300}}
+                />
+                </div>
+
+{/* --------------------------------------------------------------------------- */}
+                <div>
+                    <TextField 
+                    type = 'password'
+                    variant="outlined"
+                    size="small"
+                    name = "password"
+                    placeholder = "password"
+                    helperText ={this.state.passwordError? (<span style = {{color: "red"}}>{this.state.passwordError}</span>):("Please Enter Your Password")}
+                    value = {this.state.password} 
+                    onChange = {this.PasswordValidate} 
+                    onClick = {this.PasswordValidate} 
+                    style = {{width: 300}}
+                    />
                 </div>
 {/* --------------------------------------------------------------------------- */}
                 <div>
                     <TextField 
                     type = 'password'
                     name = "repassword"
+                    size="small"
+                    variant="outlined"
+                    helperText ={this.state.repasswordError? (<span style = {{color: "red"}}>{this.state.repasswordError}</span>):("Please Enter Your Password")}
                     placeholder = "Reenter the password"
                     value = {this.state.repassword} 
-                    onChange = {this.handleChange} 
+                    onChange = {this.RePasswordValidate} 
+                    onClick = {this.RePasswordValidate}
+                    style = {{width: 300}}
                     />
-                </div>
-                
-                <div style = {{fontSize: 12, color: "red"}}>
-                    {this.state.repasswordError}
                 </div>
 {/* ------------------------------------------------------------- */}
                 <div style = {{fontSize: 12}}>
-                    <br/>
                     <input 
                     name = 'rememberMe'
                     type = 'checkbox' 
@@ -182,9 +285,15 @@ export default class Signup extends Component{
                     </Button>
 {/* ----------------------------------------------------------------------- */}
                 </div>
+
+                <span style = {{fontSize: 12}}>Already have an acoount <a href = "/login">login in</a></span>
+                
             </form>
-            </div>
-            </div>
+            </Paper>
+            </Card>
+            </Grid>
+            <Grid item xs = {1}/>
+            </Grid>
         );
     }
 }

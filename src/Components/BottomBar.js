@@ -8,6 +8,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import EmailIcon from '@material-ui/icons/Email';
 import Logo from './Logo.png';
+import IconButton from '@material-ui/core/IconButton';
 
 
 const useStyles = makeStyles({
@@ -30,10 +31,20 @@ function BottomBar() {
             <Grid item xs={2}>
                 <br/>
                 <br/>
-                <EmailIcon/>
-                <FacebookIcon/>
-                <InstagramIcon />
-                <TwitterIcon/>
+                <strong>Contact us:</strong><br/>
+                <IconButton href = "mailto:booksouls@2020gmail.com">
+                    <EmailIcon style = {{color:"black"}}/>
+                </IconButton>
+                <IconButton href =  "https://www.facebook.com/Booksouls-100599195112923/">
+                    <FacebookIcon style = {{color:"black"}}/>
+                </IconButton>
+                <IconButton href = "https://www.instagram.com/booksouls2020/">
+                    <InstagramIcon style = {{color:"black"}}/>
+                </IconButton>
+                <IconButton href = "https://twitter.com/Booksouls1">
+                    <TwitterIcon style = {{color:"black"}}/>
+                </IconButton>
+                
             </Grid>
             <Grid item xs={8} style = {{margin:10}}>
                 <Typography variant="overline" align="center" >

@@ -9,9 +9,6 @@ import Grid from '@material-ui/core/Grid';
 import Logo from './Logo.png';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
-import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
 import BuySellHome from './BuySellHome';
 import AllBookBuy from './AllBooksBuy';
 import Login from './Login';
@@ -40,7 +37,7 @@ class NavBar extends Component {
                         <Grid item xs={2}>
                         <IconButton href = "/home">
                             <LibraryBooksTwoToneIcon fontSize = "large">  </LibraryBooksTwoToneIcon>
-                               <img src = {Logo} height="30" width="75" />
+                               <img src = {Logo} height="30" width="75" alt = "Logo"/>
                         </IconButton>
                         </Grid>
                         <Grid item xs={4}/>

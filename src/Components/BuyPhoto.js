@@ -1,18 +1,6 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import SearchIcon from '@material-ui/icons/Search';
-import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
-import BookListHome from './BookListHome';
-import GetMobileApp from './GetMobileApp';
-import Typography from '@material-ui/core/Typography';
-import BookSoulsDef from './BookSoulsDef';
-import WhyShouldBookSouls from './WhyShouldBookSouls';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
@@ -36,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
 
       display: 'block',
       // overflow: 'hidden',
+      height : 200,
+      width : 220,
     },
   }));
 
@@ -71,22 +61,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-  const style = {
-    root: {
-      minWidth: 375,
-      marginTop: 0,
-      color: 'white'
-    },
-    title: {
-      fontSize: 24,
-      textAlign:'center'
-    },  
-}
 
-
-
-  function BackgroundImg() {
-    // const classes = useStyles();
+  function BuyPhoto() {
     const classes = useStyles();
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -124,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
               </div>
             ))}
           </AutoPlaySwipeableViews>
-          {/* <MobileStepper
+          <MobileStepper
             steps={maxSteps}
             position="static"
             variant="text"
@@ -141,11 +117,11 @@ const useStyles = makeStyles((theme) => ({
                 Back
               </Button>
             }
-          /> */}
+          />
                 
         </div>  
       </>
     )
   }
 
-export default BackgroundImg 
+export default BuyPhoto 
