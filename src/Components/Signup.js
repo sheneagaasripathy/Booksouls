@@ -2,12 +2,13 @@ import React,{Component} from 'react';
 import './SignupStyle.css';
 import {Paper,  Grid, TextField, Button} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
+import image4 from "./image4.jpg"
 
 export default class Signup extends Component{
     constructor(){
         super()
-        localStorage.setItem('user',true)
-        // localStorage.removeItem('user')
+        // localStorage.setItem('user',true)
+        localStorage.removeItem('user')
         this.state = {
             name: "Hello",
             email: "",
@@ -169,13 +170,15 @@ export default class Signup extends Component{
         return(
             !localStorage.getItem('user') ? (
             <Grid container spacing={1} style = {{marginTop:30}}>
-                <Grid item xs = {7}/>
+                <Grid item xs = {7}>
+                    <img src= {image4} heigth = "50%" width = "50%" alt = "Background Books"/>
+                </Grid>
                 <Grid item xs = {4} style = {{marginBottom:15}}>
                 <Card style = {{backgroundColor:"#8c8c8c"}}>
                 <Paper style = {{margin:10}}>
             <form onSubmit = {this.handleSubmit}>
                 <br/>
-                <h2>Creat an Account</h2>
+                <h2>Register Your Account</h2>
                     <TextField 
                     Required
                     name = "name"
@@ -293,7 +296,9 @@ export default class Signup extends Component{
             </Grid>
             ):( !this.state.UpdatePassword ? (
                 <Grid container spacing={1} style = {{marginTop:30}}>
-                <Grid item xs = {7}/>
+                <Grid item xs = {7}>
+                    <img src= {image4} heigth = "50%" width = "50%" alt = "Background Books"/>
+                </Grid>
                 <Grid item xs = {4} style = {{marginBottom:15}}>
                 <Card style = {{backgroundColor:"#8c8c8c"}}>
                 <Paper style = {{margin:10}}>
@@ -375,8 +380,10 @@ export default class Signup extends Component{
             </Grid>
             ):(
                 <Grid container spacing={1} style = {{marginTop:30}}>
-                <Grid item xs = {7}/>
-                <Grid item xs = {4} style = {{marginBottom:15}}>
+                <Grid item xs = {7}>
+                    <img src= {image4} heigth = "50%" width = "50%" alt = "Background Books"/>
+                </Grid>
+                <Grid item xs = {4} style = {{marginTop:60}}>
                 <Card style = {{backgroundColor:"#8c8c8c"}}>
                 <Paper style = {{margin:10}}>
             <form onSubmit = {this.handleSubmit}>

@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Logo from './Logo.png';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 import BuySellHome from './BuySellHome';
 import AllBookBuy from './AllBooksBuy';
 import Login from './Login';
@@ -35,10 +36,12 @@ class NavBar extends Component {
                         <Toolbar style = {{color:"black"}}>
                         <Grid container spacing={1}>
                         <Grid item xs={2}>
+                        <Tooltip title="Home">
                         <IconButton href = "/home">
                             <LibraryBooksTwoToneIcon fontSize = "large">  </LibraryBooksTwoToneIcon>
                                <img src = {Logo} height="30" width="75" alt = "Logo"/>
                         </IconButton>
+                        </Tooltip>
                         </Grid>
                         <Grid item xs={4}/>
                         <Grid item xs = {4}>
@@ -48,7 +51,7 @@ class NavBar extends Component {
                             <Grid item xs={1}>
                                 <br/>
                                 <Typography style = {{marginTop:"5"}}>
-                                    <Button variant="outlined" color="white" href = "/login">
+                                    <Button variant="outlined" color="white" href = "/login" style = {{width:"100%"}}>
                                         Login
                                     </Button>
                                 </Typography>
@@ -56,7 +59,7 @@ class NavBar extends Component {
                             <Grid item xs={1}>
                                 <br/>
                                 <Typography>
-                                    <Button variant="outlined" color="white" href = "/signup">
+                                    <Button variant="outlined" color="white" href = "/signup" style = {{width:"100%"}}>
                                         Signup
                                     </Button>
                                 </Typography>

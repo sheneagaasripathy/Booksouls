@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
                 <Grid container spacing={1} >
                     <Grid item xs = {1}/>
                     <Grid item xs = {4} style={{justifyContent: 'bottom'}}>
-                            <div className={style.title} style={{ margin: 5 }}>
+                            <div className={style.title} style={{ marginTop: 5 }}>
                               <view></view>
                                 Get our Mobile App<br/>
                                 [Our Mobile app not yet developed]

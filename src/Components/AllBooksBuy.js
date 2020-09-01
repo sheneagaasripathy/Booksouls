@@ -75,7 +75,7 @@ function AllBookBuy() {
                 <Grid item xs = {8} style ={{padding:40}}>
                     <Card >
                         <Paper style ={{padding:20}} class = "AllBookSellBG"> 
-                            <div align = "left" style = {{margin:40}}>
+                            <div align = "left" style = {{marginTop:40}}>
                             <TextField
                             id="input-with-icon-textfield"
                             label="Search for Books"
@@ -131,7 +131,7 @@ function AllBookBuy() {
                     <Card style ={{marginTop:40}}>
                         <Paper style ={{padding:20}} class = "AllBookSellBG">
                         <h2>Filter</h2>
-                            <Typography id="range-slider" gutterBottom>
+                            <Typography id="Price" gutterBottom>
                                 Price range
                             </Typography>
                             <Slider
@@ -189,7 +189,7 @@ function AllBookBuy() {
                 <Grid item xs = {8} style ={{padding:40}}>
                     <Card >
                         <Paper style ={{padding:20}} class = "AllBookSellBG"> 
-                            <div align = "left" style = {{margin:40}}>
+                            <div align = "left" style = {{marginTop:40}}>
                             <TextField
                             className={classes.margin}
                             id="input-with-icon-textfield"

@@ -32,7 +32,7 @@ const style={
       minWidth:500,
       backgroundcolor:'#8c8c8c',
       color:"#424242",
-      margin:20
+      marginTop:20
     }
     
 }

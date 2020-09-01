@@ -3,15 +3,17 @@ import{Card,CardContent,Typography,FormControl,TextField,Grid,Paper} from "@mate
 import Button from '@material-ui/core/Button'
 import NavBar from "./NavBar";
 import { green } from "@material-ui/core/colors";
+import image5 from "./image5.png"
 
 const style={
     
     root:{
       minWidth:450,
       
-      backgroundColor:"#424242",
-      marginTop:60,
-      color:'#212121'
+      backgroundColor:"#8c8c8c",
+      marginTop:40,
+      color:'#212121',
+      marginBottom : 40
   },
   card:{
     minWidth:500,
@@ -31,11 +33,14 @@ export default class Sell extends Component{
           
           
             <Grid container>
-                <Grid item xs={4}/>
-                 <Grid item xs={1}/>
+                <Grid item xs={1}/>
+                 <Grid item xs={5} style = {{marginTop:60}}>
+                    <img src= {image5}  alt = "Background Books"/>
+                  </Grid>
+                  <Grid item xs={1}/>
                  <Grid item xs={4}>
-                 <Card style={style.root}>
-                   <Paper style={{margin:30,}}>
+                 <Card style={style.root} >
+                   <Paper style={{margin:10}}>
           
               <CardContent>
                 <form >
@@ -218,7 +223,7 @@ export default class Sell extends Component{
               </Paper>
         </Card>
         </Grid>
-        <Grid item xs={4}/>
+        <Grid item xs={1}/>
       </Grid>
 
       

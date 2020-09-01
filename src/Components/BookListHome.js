@@ -6,6 +6,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import Tooltip from '@material-ui/core/Tooltip';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
 const useStyles = makeStyles((theme) => ({
@@ -77,9 +78,11 @@ export default function BookListHome() {
                   title: classes.title,
                 }}
                 actionIcon={
+                  <Tooltip title="Buy">
                   <IconButton href = "/buyBook">
                     <ShoppingBasketIcon className={classes.title} />
                   </IconButton>
+                  </Tooltip>
                 }
               />
             </GridListTile>

@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Paper, Grid, TextField, Button} from '@material-ui/core';
 import './LoginStyle.css';
-import image2 from './image2.JPG'
+import image2 from './image2.jpg'
 
 
 export default class Login extends Component{
@@ -119,7 +119,7 @@ export default class Login extends Component{
             !this.state.fogot ? (   
             <div style = {{padding:30}}>
                 <Grid container spacing={1}  >
-                <Grid item xs = {7} style = {{marginTop:50}}>
+                <Grid item xs = {7} style = {{marginTop:40}}>
                     <img src= {image2} heigth = "50%" width = "50%" alt = "Background Books"/>
                 </Grid>
                 <Grid item xs={4} style = {{backgroundColor:"#8c8c8c"}}>
@@ -176,7 +176,7 @@ export default class Login extends Component{
                 <div style = {{padding:20}}>
                 <Grid container spacing={1}  >
                 <Grid item xs = {7}>
-                    <img src= {image2} heigth = "50%" width = "50%"/>
+                    <img src= {image2} heigth = "40%" width = "40%"/>
                 </Grid>
                 <Grid item xs={4} style = {{backgroundColor:"#8c8c8c"}}>
                     <Paper style = {{padding : 30}}>
@@ -214,7 +214,7 @@ export default class Login extends Component{
                 <div style = {{padding:20}}>
                 <Grid container spacing={1}  >
                 <Grid item xs = {7}>
-                    <img src= {image2} heigth = "50%" width = "50%"/>
+                <img src= {image2} heigth = "40%" width = "40%"/>
                 </Grid>
                 <Grid item xs={4} style = {{backgroundColor:"#8c8c8c"}}>
                     <Paper style = {{padding : 30}}>
@@ -251,7 +251,7 @@ export default class Login extends Component{
                 <div style = {{padding:20}}>
                 <Grid container spacing={1}  >
                 <Grid item xs = {7}>
-                    <img src= {image2} heigth = "50%" width = "50%"/>
+                    <img src= {image2} heigth = "40%" width = "40%"/>
                 </Grid>
                 <Grid item xs={4} style = {{backgroundColor:"#8c8c8c"}}>
                     <Paper style = {{padding : 30}}>
