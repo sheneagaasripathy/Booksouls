@@ -10,6 +10,8 @@ import Logo from './Logo.png';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import BuySellHome from './BuySellHome';
 import AllBookBuy from './AllBooksBuy';
 import Login from './Login';
@@ -25,9 +27,21 @@ class NavBar extends Component {
     constructor(props){
         super();
         this.state = {
-            isLogin : true
+            isLogin : false,
+            AnchorEl : null
         }
     }
+    handleClick = (event) => {
+        this.setState({
+            AnchorEl  : event.currentTarget
+        });
+      };
+    
+    handleClose = () => {
+        this.setState({
+            AnchorEl  : null
+        });
+      };
     render(){
         return(
             <>
@@ -67,19 +81,31 @@ class NavBar extends Component {
                             (<>
                                 <Grid item xs={1}>
                                 <br/>
-                                <Typography>
+                                {/* <Typography>
                                     <Button variant="outlined" color="white" href = "/home">
                                         Signout
                                     </Button>
-                                </Typography> 
+                                </Typography>  */}
                                 </Grid>
                                 <Grid item xs={1}>
                                 <br/>
                                 <Typography style = {{marginTop:"5"}} >
                                     Profile
-                                    <IconButton href = "/signup">
+                                    <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick} >
                                     <AccountCircleIcon fontSize = "medium"/>
                                     </IconButton>
+                                    <Menu
+                                    id="simple-menu"
+                                    anchorEl={this.state.AnchorEl}
+                                    keepMounted
+                                    open={Boolean(this.state.AnchorEl)}
+                                    onClose={this.handleClose}
+                                >
+                                    <MenuItem onClick={this.handleClose}> <Button href = "/signup">Edit Profile </Button></MenuItem>
+                                    <MenuItem onClick={this.handleClose}> <Button href = "/sell">Sell a Book</Button></MenuItem>
+                                    <MenuItem onClick={this.handleClose}> <Button href = "/buy">Buy a Book</Button></MenuItem>
+                                    <MenuItem onClick={this.handleClose}> <Button href = "/home">Logout</Button></MenuItem>
+                                </Menu>
                                 </Typography>
                             </Grid>
                             

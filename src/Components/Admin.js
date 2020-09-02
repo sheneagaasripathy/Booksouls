@@ -12,7 +12,7 @@ function Admin(){
         <>
         <Grid container spacing={1} style = {{fontFamily:"monospace"}}>
                 <Grid item xs = {2}/>
-                <Grid item xs = {8} style ={{marginTop : 40}}>
+                <Grid item xs = {8} style ={{margin : "5%"}}>
                     <Card style = {{backgroundColor:"#dde4e6"}}>
                         <Paper style = {{backgroundColor:"#dde4e6"}}>
                             <h1>Welcome to the Admin Board</h1>
