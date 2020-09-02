@@ -75,9 +75,11 @@ class NavBar extends Component {
                                 </Grid>
                                 <Grid item xs={1}>
                                 <br/>
-                                <Typography style = {{marginTop:"5"}}>
+                                <Typography style = {{marginTop:"5"}} >
                                     Profile
-                                    <AccountCircleIcon fontSize = "large"/>
+                                    <IconButton href = "/signup">
+                                    <AccountCircleIcon fontSize = "medium"/>
+                                    </IconButton>
                                 </Typography>
                             </Grid>
                             

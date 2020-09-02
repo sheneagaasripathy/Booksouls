@@ -72,6 +72,7 @@ export default class Buy extends Component{
           alertMessage : false,
           open : false
         }
+        
       }
 
       IsAlert =  () =>{
@@ -94,7 +95,11 @@ export default class Buy extends Component{
       
   
     render(){
+      
         return(
+          
+
+       
         <Grid container spacing = {1}  style = {{marginTop:30}}> 
         <Grid item xs={5}>
           <img src = {image3} height = "65%" width = "70%" alt = "Background Books"/>
